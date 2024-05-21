@@ -1,0 +1,10 @@
+C:\Users\mcava\OneDrive\Documentos\maxiprograman2\WinFormCRUD\WinFormCRUD_1\bin\Debug\WinFormCRUD_1.exe.config
+C:\Users\mcava\OneDrive\Documentos\maxiprograman2\WinFormCRUD\WinFormCRUD_1\bin\Debug\WinFormCRUD_1.exe
+C:\Users\mcava\OneDrive\Documentos\maxiprograman2\WinFormCRUD\WinFormCRUD_1\bin\Debug\WinFormCRUD_1.pdb
+C:\Users\mcava\OneDrive\Documentos\maxiprograman2\WinFormCRUD\WinFormCRUD_1\obj\Debug\WinFormCRUD_1.csproj.AssemblyReference.cache
+C:\Users\mcava\OneDrive\Documentos\maxiprograman2\WinFormCRUD\WinFormCRUD_1\obj\Debug\WinFormCRUD_1.Form1.resources
+C:\Users\mcava\OneDrive\Documentos\maxiprograman2\WinFormCRUD\WinFormCRUD_1\obj\Debug\WinFormCRUD_1.Properties.Resources.resources
+C:\Users\mcava\OneDrive\Documentos\maxiprograman2\WinFormCRUD\WinFormCRUD_1\obj\Debug\WinFormCRUD_1.csproj.GenerateResource.cache
+C:\Users\mcava\OneDrive\Documentos\maxiprograman2\WinFormCRUD\WinFormCRUD_1\obj\Debug\WinFormCRUD_1.csproj.CoreCompileInputs.cache
+C:\Users\mcava\OneDrive\Documentos\maxiprograman2\WinFormCRUD\WinFormCRUD_1\obj\Debug\WinFormCRUD_1.exe
+C:\Users\mcava\OneDrive\Documentos\maxiprograman2\WinFormCRUD\WinFormCRUD_1\obj\Debug\WinFormCRUD_1.pdb
