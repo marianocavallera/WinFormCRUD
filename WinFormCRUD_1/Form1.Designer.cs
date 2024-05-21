@@ -144,6 +144,7 @@
             this.buttonActualizar.TabIndex = 12;
             this.buttonActualizar.Text = "ACTUALIZAR";
             this.buttonActualizar.UseVisualStyleBackColor = true;
+            this.buttonActualizar.Click += new System.EventHandler(this.buttonActualizar_Click);
             // 
             // buttonEliminar
             // 

@@ -39,20 +39,55 @@ namespace WinFormCRUD_1
 
         private void buttonAgregar_Click(object sender, EventArgs e)
         {
-            string sqlInsert = "insert into Personas (name, dni, dateBird, direction) values (@name, @dni, @dateBird, @direction)";
+            try
+            {
+                string sqlInsert = "insert into Personas (name, dni, dateBird, direction) values (@name, @dni, @dateBird, @direction)";
 
-            SqlCommand sqlCmdInsert = new SqlCommand(sqlInsert, ConnectionDB.ConnectionSQL());
+                SqlCommand sqlCmdInsert = new SqlCommand(sqlInsert, ConnectionDB.ConnectionSQL());
 
-            sqlCmdInsert.Parameters.AddWithValue("@name", textBoxName.Text);
-            sqlCmdInsert.Parameters.AddWithValue("@dni", Convert.ToInt32(textBoxDNI.Text));
-            sqlCmdInsert.Parameters.AddWithValue("@dateBird", Convert.ToDateTime(dateTimeBirdPicker.Text));
-            sqlCmdInsert.Parameters.AddWithValue("@direction", textBoxDirection.Text);
+                sqlCmdInsert.Parameters.AddWithValue("@name", textBoxName.Text);
+                sqlCmdInsert.Parameters.AddWithValue("@dni", Convert.ToInt32(textBoxDNI.Text));
+                sqlCmdInsert.Parameters.AddWithValue("@dateBird", Convert.ToDateTime(dateTimeBirdPicker.Text));
+                sqlCmdInsert.Parameters.AddWithValue("@direction", textBoxDirection.Text);
 
-            sqlCmdInsert.ExecuteNonQuery();
+                sqlCmdInsert.ExecuteNonQuery();
 
-            MessageBox.Show("Persona agregada");
+                MessageBox.Show("Persona agregada");
+
+                dataGridView1.DataSource = Index();
+            }
+
+            catch (SqlException ex) {
+
+                if (ex.Number == 2627) // Código de error para clave duplicada en SQL Server
+                {
+                    MessageBox.Show("Error: Ya existe una persona registrada con el mismo DNI");
+                }
+                else
+                {
+                    MessageBox.Show("Ocurrió un error: " + ex.Message);
+                }
+            } 
+        }
+
+        private void buttonActualizar_Click(object sender, EventArgs e)
+        {
+            string sqlUpdate = "UPDATE Personas SET name=@name, dateBird=@dateBird, direction=@direction WHERE dni = @dni;";
+
+            SqlCommand sqlCmdUpdate = new SqlCommand(sqlUpdate, ConnectionDB.ConnectionSQL());
+
+            sqlCmdUpdate.Parameters.AddWithValue("@name", textBoxName.Text);
+            sqlCmdUpdate.Parameters.AddWithValue("@dni", Convert.ToInt32(textBoxDNI.Text));
+            sqlCmdUpdate.Parameters.AddWithValue("@dateBird", Convert.ToDateTime(dateTimeBirdPicker.Text));
+            sqlCmdUpdate.Parameters.AddWithValue("@direction", textBoxDirection.Text);
+
+            sqlCmdUpdate.ExecuteNonQuery();
+
+            MessageBox.Show("Persona actualizada");
 
             dataGridView1.DataSource = Index();
         }
+
+
     }
 }
