@@ -88,6 +88,34 @@ namespace WinFormCRUD_1
             dataGridView1.DataSource = Index();
         }
 
+        private void buttonEliminar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string sqlDelete = "DELETE FROM Personas WHERE dni = @dni;";
 
+                SqlCommand sqlCmdDelete = new SqlCommand(sqlDelete, ConnectionDB.ConnectionSQL());
+
+                sqlCmdDelete.Parameters.AddWithValue("@dni", Convert.ToInt32(textBoxDNI.Text));
+
+                int rowsAffected = sqlCmdDelete.ExecuteNonQuery();
+
+                if (rowsAffected > 0)
+                {
+                    MessageBox.Show("Registro eliminado exitosamente.");
+                }
+                else
+                {
+                    MessageBox.Show("No se encontró un registro con el dni proporcionado.");
+                }
+                sqlCmdDelete.ExecuteNonQuery();
+
+                dataGridView1.DataSource = Index();
+            }
+            catch (SqlException ex) {
+
+                MessageBox.Show("Ocurrió un error: " + ex.Message);
+            }
+        }
     }
 }
