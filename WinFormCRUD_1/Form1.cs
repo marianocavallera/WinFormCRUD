@@ -72,20 +72,35 @@ namespace WinFormCRUD_1
 
         private void buttonActualizar_Click(object sender, EventArgs e)
         {
-            string sqlUpdate = "UPDATE Personas SET name=@name, dateBird=@dateBird, direction=@direction WHERE dni = @dni;";
+            try { 
+                string sqlUpdate = "UPDATE Personas SET name=@name, dateBird=@dateBird, direction=@direction WHERE dni = @dni;";
 
-            SqlCommand sqlCmdUpdate = new SqlCommand(sqlUpdate, ConnectionDB.ConnectionSQL());
+                SqlCommand sqlCmdUpdate = new SqlCommand(sqlUpdate, ConnectionDB.ConnectionSQL());
 
-            sqlCmdUpdate.Parameters.AddWithValue("@name", textBoxName.Text);
-            sqlCmdUpdate.Parameters.AddWithValue("@dni", Convert.ToInt32(textBoxDNI.Text));
-            sqlCmdUpdate.Parameters.AddWithValue("@dateBird", Convert.ToDateTime(dateTimeBirdPicker.Text));
-            sqlCmdUpdate.Parameters.AddWithValue("@direction", textBoxDirection.Text);
+                sqlCmdUpdate.Parameters.AddWithValue("@name", textBoxName.Text);
+                sqlCmdUpdate.Parameters.AddWithValue("@dni", Convert.ToInt32(textBoxDNI.Text));
+                sqlCmdUpdate.Parameters.AddWithValue("@dateBird", Convert.ToDateTime(dateTimeBirdPicker.Text));
+                sqlCmdUpdate.Parameters.AddWithValue("@direction", textBoxDirection.Text);
 
-            sqlCmdUpdate.ExecuteNonQuery();
 
-            MessageBox.Show("Persona actualizada");
+                int rowsAffected = sqlCmdUpdate.ExecuteNonQuery();
 
-            dataGridView1.DataSource = Index();
+                if (rowsAffected > 0)
+                {
+                    MessageBox.Show("Persona actualizada");
+                }
+                else
+                {
+                    MessageBox.Show("No se encontró un registro con el dni proporcionado.");
+                }
+                sqlCmdUpdate.ExecuteNonQuery();
+
+                dataGridView1.DataSource = Index();
+            }
+            catch (SqlException ex) {
+
+                MessageBox.Show("Ocurrió un error al actualizar: " + ex.Message);
+            }
         }
 
         private void buttonEliminar_Click(object sender, EventArgs e)
@@ -114,7 +129,7 @@ namespace WinFormCRUD_1
             }
             catch (SqlException ex) {
 
-                MessageBox.Show("Ocurrió un error: " + ex.Message);
+                MessageBox.Show("Ocurrió un error al eliminar: " + ex.Message);
             }
         }
     }
