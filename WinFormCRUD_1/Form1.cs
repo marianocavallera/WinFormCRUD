@@ -36,6 +36,23 @@ namespace WinFormCRUD_1
 
             return dt;
         }
+        private DataTable BuscarPersonasPorDNI(int dni)
+        {
+            DataTable dt = new DataTable();
+            string sqlSelect = "SELECT * FROM Personas WHERE dni = @dni;";
+            using (SqlCommand sqlCmdSelect = new SqlCommand(sqlSelect, ConnectionDB.ConnectionSQL()))
+            {
+                sqlCmdSelect.Parameters.AddWithValue("@dni", dni);
+
+                using (SqlDataAdapter adapter = new SqlDataAdapter(sqlCmdSelect))
+                {
+                    adapter.Fill(dt);
+                }
+            }
+            return dt;
+        }
+
+
 
         private void buttonAgregar_Click(object sender, EventArgs e)
         {
@@ -131,6 +148,27 @@ namespace WinFormCRUD_1
 
                 MessageBox.Show("Ocurrió un error al eliminar: " + ex.Message);
             }
+        }
+
+        private void buttonBuscar_Click(object sender, EventArgs e)
+        {
+            try {
+                DataTable dt = BuscarPersonasPorDNI(Convert.ToInt32(textBoxDNI.Text));
+
+                if (dt.Rows.Count == 0)
+                {
+                    MessageBox.Show("No se encontraron personas registradas con ese DNI.");
+                }
+                else
+                {
+                    dataGridView1.DataSource = dt;
+                }
+}
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ocurrió un error: {ex.Message}");
+            }
+
         }
     }
 }

@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.labelTitle = new System.Windows.Forms.Label();
             this.labelName = new System.Windows.Forms.Label();
             this.labelDni = new System.Windows.Forms.Label();
@@ -41,6 +43,8 @@
             this.buttonAgregar = new System.Windows.Forms.Button();
             this.buttonActualizar = new System.Windows.Forms.Button();
             this.buttonEliminar = new System.Windows.Forms.Button();
+            this.buttonBuscar = new System.Windows.Forms.Button();
+            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -156,11 +160,28 @@
             this.buttonEliminar.UseVisualStyleBackColor = true;
             this.buttonEliminar.Click += new System.EventHandler(this.buttonEliminar_Click);
             // 
+            // buttonBuscar
+            // 
+            this.buttonBuscar.Location = new System.Drawing.Point(12, 246);
+            this.buttonBuscar.Name = "buttonBuscar";
+            this.buttonBuscar.Size = new System.Drawing.Size(276, 96);
+            this.buttonBuscar.TabIndex = 14;
+            this.buttonBuscar.Text = "BUSCAR";
+            this.buttonBuscar.UseVisualStyleBackColor = true;
+            this.buttonBuscar.Click += new System.EventHandler(this.buttonBuscar_Click);
+            // 
+            // imageList1
+            // 
+            this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
+            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageList1.Images.SetKeyName(0, "home-icons-windows-home-icon-windows-10-11553530278upfcmhtqjj.png");
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1197, 660);
+            this.Controls.Add(this.buttonBuscar);
             this.Controls.Add(this.buttonEliminar);
             this.Controls.Add(this.buttonActualizar);
             this.Controls.Add(this.buttonAgregar);
@@ -198,6 +219,8 @@
         private System.Windows.Forms.Button buttonAgregar;
         private System.Windows.Forms.Button buttonActualizar;
         private System.Windows.Forms.Button buttonEliminar;
+        private System.Windows.Forms.Button buttonBuscar;
+        private System.Windows.Forms.ImageList imageList1;
     }
 }
 
